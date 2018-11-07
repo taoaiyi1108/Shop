@@ -3,10 +3,11 @@
         "pages/classic/classic"
     ],
     "window": {
-        "navigationBarBackgroundColor": "#123456",
+        "navigationBarBackgroundColor": "#ffffff",
         "navigationBarTitleText": "火气小龙龙",
         "navigationStyle": "defalut",
-        "backgroundColor": "#D80000",
-        "enablePullDownRefresh": true
+        "backgroundColor": "#ffffff",
+        "enablePullDownRefresh": true,
+        "navigationBarTextStyle": "black"
     }
 }
