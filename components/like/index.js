@@ -32,6 +32,12 @@ Component({
                 count,
                 like:!like
             });
+
+            // 点赞逻辑
+            let behavior = this.properties.like?"like":"cancel";
+            this.triggerEvent('like',{
+                behavior
+            },{})
         }
     }
 })
