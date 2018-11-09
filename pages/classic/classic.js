@@ -1,14 +1,18 @@
 import {
     ClassicModel
 } from "../../models/classic.js";
-var classic = new ClassicModel();
+import {
+    LikeModel
+} from "../../models/like.js";
+var classicModel = new ClassicModel();
+var likeModel = new LikeModel();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        classic:null
+        classic: null
     },
 
     /**
@@ -35,14 +39,15 @@ Page({
         //     }
         // })
         // 第三种
-        classic.getLatest( res => {
+        classicModel.getLatest(res => {
             this.setData({
-                classic:res
+                classic: res
             })
         });
     },
 
-    onLike(event){
-        console.log(event)
+    onLike(event) {
+        let behavior = event.detail.behavior;
+        likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
     }
 })

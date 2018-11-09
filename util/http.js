@@ -23,7 +23,8 @@ class HTTP {
             success: response => {
                 let code = response.statusCode.toString();
                 if (code.startsWith("2")) {
-                    params.success(response.data);
+                    // 判断 success 是否存在 
+                    params.success && params.success(response.data);
                 } else {
                     let error_code = response.data.error_code;
                     this._show_error(error_code);
