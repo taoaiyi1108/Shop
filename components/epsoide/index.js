@@ -10,7 +10,6 @@ Component({
             type: Number,
             observer(newVal, oldVal, changedPath) {
                 let val = newVal < 10 ? "0" + newVal : newVal;
-                console.log(val);
                 this.setData({
                     _index: val
                 });

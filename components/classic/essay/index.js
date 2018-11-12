@@ -1,4 +1,3 @@
-// components/classic/movie/index.js
 import {
     classicBeh
 } from '../classic-beh.js';
@@ -8,15 +7,8 @@ Component({
      */
     behaviors: [classicBeh],
     properties: {
+
     },
-    // properties: {
-    //     img:{
-    //         type:String
-    //     },
-    //     content:{
-    //         type:String
-    //     }
-    // },
 
     /**
      * 组件的初始数据
