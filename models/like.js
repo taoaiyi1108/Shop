@@ -14,6 +14,17 @@ class LikeModel extends HTTP {
             }
         });
     }
+
+    getClassicLikeStatus(artID, category, sCallback) {
+        this.request({
+            // ES6 字符创模板 改写 url
+            // url: "classic/" + category + "/" + artID + "/favor",
+            url: `classic/${category}/${artID}/favor`,
+            success: sCallback
+        })
+    }
 }
 
-export { LikeModel };
+export {
+    LikeModel
+};

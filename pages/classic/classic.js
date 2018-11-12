@@ -14,7 +14,9 @@ Page({
     data: {
         classic: null,
         latest: true,
-        first: false
+        first: false,
+        likeCount: 0,
+        likeStatus: false
     },
 
     /**
@@ -43,7 +45,9 @@ Page({
         // 第三种
         classicModel.getLatest(res => {
             this.setData({
-                classic: res
+                classic: res,
+                likeCount: res.fav_nums,
+                likeStatus: res.like_status
             })
         });
     },
@@ -64,11 +68,21 @@ Page({
     _updateClassic(nextOrprevious) {
         let index = this.data.classic.index;
         classicModel.getClassic(index, nextOrprevious, res => {
+            this._getLikeStatus(res.id, res.type);
             this.setData({
                 classic: res,
                 latest: classicModel.isLatest(res.index),
                 first: classicModel.isFirst(res.index)
             });
         })
+    },
+
+    _getLikeStatus(artID, category) {
+        likeModel.getClassicLikeStatus(artID, category, res => {
+            this.setData({
+                likeCount: res.fav_nums,
+                likeStatus: res.like_status
+            });
+        });
     }
 })

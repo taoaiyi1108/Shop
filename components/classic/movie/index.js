@@ -8,6 +8,10 @@ Component({
      */
     behaviors: [classicBeh],
     properties: {
+        hidden: {
+            type:Boolean,
+            value:false
+        }
     },
     // properties: {
     //     img:{
