@@ -4,7 +4,7 @@
         <like-cmp class="like" like="{{likeStatus}}" count="{{likeCount}}" bind:like="onLike" />
     </view>
     <movie-cmp hidden="{{classic.type != 100}}" img="{{classic.image}}" content="{{classic.content}}" />
-    <music-cmp hidden="{{classic.type != 200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" />
+    <music-cmp wx:if="{{classic.type == 200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" />
     <essay-cmp hidden="{{classic.type != 300}}" img="{{classic.image}}" content="{{classic.content}}" />
     <navi-cmp bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" class="navi" />
 </view>

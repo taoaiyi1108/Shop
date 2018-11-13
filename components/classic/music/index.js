@@ -22,20 +22,61 @@ Component({
         playSrc: 'images/player@play.png',
         playing: false
     },
+    // 组件生命周期
+    // 在组件实例进入页面节点树时执行
+    attached() {
+        this._recoverStatus();
+        this._monitorSwitch();
+    },
+    // 当组件在页面被移除的时候触发
+    detached() {
+
+    },
 
     /**
      * 组件的方法列表
      */
     methods: {
         onPlay(e) {
-            console.log(e)
             if (!this.data.playing) {
                 mMgr.src = this.properties.src;
-            }else {
+                this.setData({
+                    playing: true
+                });
+            } else {
                 mMgr.pause();
+                this.setData({
+                    playing: false
+                });
             }
-            this.setData({
-                playing: !this.data.playing
+
+        },
+        _recoverStatus() {
+            if (mMgr.paused) {
+                this.setData({
+                    playing: false
+                });
+                return; // 2个if只能执行一个
+            }
+            // mMgr.src 代表的是当前播放的音乐src
+            if (mMgr.src == this.data.src) {
+                this.setData({
+                    playing: true
+                });
+            }
+        },
+        _monitorSwitch() {
+            mMgr.onPlay(() => {
+                this._recoverStatus();
+            });
+            mMgr.onPause(() => {
+                this._recoverStatus();
+            });
+            mMgr.onStop(() => {
+                this._recoverStatus();
+            });
+            mMgr.onEnded(() => {
+                this._recoverStatus();
             });
         }
     }
