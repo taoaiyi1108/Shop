@@ -30,7 +30,7 @@ Page({
         })
         bookComments.then(res => {
             this.setData({
-                comments: res
+                comments: res.comments
             });
         })
         bookLikeStatus.then(res => {

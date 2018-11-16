@@ -42,7 +42,7 @@
 					"id": 0,
 					"name": "调测",
 					"pathName": "pages/book-detail/book-detail",
-					"query": "id=1120"
+					"query": "id=7"
 				}
 			]
 		}

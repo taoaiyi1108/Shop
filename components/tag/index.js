@@ -1,10 +1,14 @@
 // components/tag/index.js
 Component({
+    // 小程序默认 不会启用 slot 必须手动配置
+    options: {
+        multipleSlots: true
+    },
     /**
      * 组件的属性列表
      */
     properties: {
-        text: String
+        text: String,
     },
 
     /**

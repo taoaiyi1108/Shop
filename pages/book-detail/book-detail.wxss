@@ -47,3 +47,28 @@
     color: #2f2f2f;
     margin-bottom: 20rpx;
 }
+
+.comment-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.comment-container tag-cmp {
+    margin-right: 15rpx;
+    margin-bottom: 10rpx;
+}
+
+.num {
+    margin-left: 5px;
+    font-size: 22rpx;
+    color: #aaa;
+}
+
+.comment-container > tag-cmp:nth-child(1) > view {
+    background-color: #fffdbb;
+}
+
+.comment-container > tag-cmp:nth-child(2) > view {
+    background-color: #eefbff;
+}
