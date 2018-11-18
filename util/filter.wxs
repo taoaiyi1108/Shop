@@ -1,0 +1,14 @@
+var format = function(text) {
+    if (!text) {
+        return;
+    }
+    var reg = getRegExp("\\\\n", "g");
+    return text.replace(reg, "\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+
+module.exports = {
+    format: format
+}
+
+// wxs 语法形式和JavaScript一样 但不等同于 JavaScript 
+// wxs 拥有独立的运行机制(环境)

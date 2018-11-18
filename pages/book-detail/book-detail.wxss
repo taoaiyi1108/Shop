@@ -65,10 +65,25 @@
     color: #aaa;
 }
 
-.comment-container > tag-cmp:nth-child(1) > view {
+/* .comment-container > tag-cmp:nth-child(1) > view {
     background-color: #fffdbb;
 }
 
 .comment-container > tag-cmp:nth-child(2) > view {
     background-color: #eefbff;
+} */
+
+/* 组件外部的样式 */
+
+.ex-tag1 {
+    background-color: #fffdbb !important;
+}
+
+.ex-tag2 {
+    background-color: #eefbff !important;
+}
+
+.content {
+    text-indent: 58rpx;
+    font-weight: 500;
 }

@@ -4,6 +4,9 @@ Component({
     options: {
         multipleSlots: true
     },
+    // 接收外部传进来的css样式
+    // 允许自定义多个，用一个数组接收
+    externalClasses: ['tag-class'],
     /**
      * 组件的属性列表
      */
