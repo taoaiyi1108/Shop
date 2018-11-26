@@ -40,6 +40,7 @@ Component({
         onPlay(e) {
             if (!this.data.playing) {
                 mMgr.src = this.properties.src;
+                mMgr.title = this.properties.content; // 必填字段 不能让小程序自己识别
                 this.setData({
                     playing: true
                 });

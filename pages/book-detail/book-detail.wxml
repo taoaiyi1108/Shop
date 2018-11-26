@@ -8,11 +8,12 @@
     </view>
     <view class='sub-container'>
         <text class='headline'>短评</text>
+        <text class='shadow' wx:if="{{comments == false}}">还没有短评</text>
         <view class='comment-container'>
             <block wx:for="{{util.limit(comments,15)}}" wx:for-item="item" wx:key="equie">
                 <!-- <tag-cmp text="{{item.content}}" /> -->
                 <!-- 要使用slot插槽 tag-cmp 就必须是一个双标签 -->
-                <tag-cmp tag-class="{{index==0?'ex-tag1':''||index==1?'ex-tag2':''}}" text="{{item.content}}">
+                <tag-cmp tag-class="{{tool.heightlight(index)}}" text="{{item.content}}">
                     <text class='num' slot="after">{{"+" + item.nums}}</text>
                 </tag-cmp>
             </block>
@@ -42,3 +43,45 @@
         </view>
     </view>
 </view>
+<!-- 短评 -->
+<view class='post-container' wx:if="{{!posting}}">
+    <view class='post-fake' bind:tap="onFakePost">
+        <text>输入短评</text>
+    </view>
+    <like-cmp bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
+</view>
+
+<view class='posting-container' wx:if="{{posting}}">
+    <view class='posting-header'>
+        <text wx:if="{{comments == true}}">仅可点击标签+1</text>
+        <text wx:else>暂无短评</text>
+        <text class='cancel' bind:tap="onCancel">取消</text>
+    </view>
+    <view class='comment-container'>
+        <block wx:for="{{util.limit(comments,3)}}" wx:for-item="item" wx:key="equie">
+            <!-- <tag-cmp text="{{item.content}}" /> -->
+            <!-- 要使用slot插槽 tag-cmp 就必须是一个双标签 -->
+            <tag-cmp bind:tapping="onPost" tag-class="{{tool.heightlight(index)}}" text="{{item.content}}">
+                <text class='num' slot="after">{{"+" + item.nums}}</text>
+            </tag-cmp>
+        </block>
+    </view>
+    <input bind:comfirm="onPost" class='post' placeholder='短评最多12个字' />
+</view>
+
+<mask-cmp wx-if="{{posting}}" />
+
+<wxs module="tool">
+    var heightlight = function(index) {
+        if (index == 0) {
+            return 'ex-tag1'
+        }
+        if (index == 1) {
+            return 'ex-tag2'
+        }
+        return '';
+    }
+    module.exports = {
+        heightlight: heightlight
+    }
+</wxs>
