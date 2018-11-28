@@ -41,8 +41,8 @@
 				{
 					"id": 0,
 					"name": "调测",
-					"pathName": "pages/book-detail/book-detail",
-					"query": "id=7"
+					"pathName": "pages/book/book",
+					"query": ""
 				}
 			]
 		}
