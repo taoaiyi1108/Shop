@@ -15,4 +15,4 @@
     </view>
 </view>
 
-<search-cmp bind:cancle="onCancel" wx:if="{{searching}}" />
+<search-cmp more="{{more}}" bind:cancle="onCancel" wx:if="{{searching}}" />
