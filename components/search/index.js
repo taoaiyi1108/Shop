@@ -16,7 +16,7 @@ Component({
     properties: {
         more: {
             type: String,
-            observer:"_load_more"
+            observer: "_load_more"
         }
     },
 
@@ -28,7 +28,8 @@ Component({
         hotWords: [],
         dataArray: [],
         searching: false,
-        q: ''
+        q: '',
+        loading: false
     },
 
     attached() {
@@ -68,8 +69,22 @@ Component({
                 searching: false
             });
         },
-        _load_more(){
-            console.log(123)
+        _load_more() {
+            if (!this.data.q) {
+                return;
+            }
+            if (this.data.loading) {
+                return;
+            }
+            const length = this.data.dataArray.length;
+            this.data.loading = true;
+            bookModel.search(length, this.data.q).then(res => {
+                const tempArray = this.data.dataArray.concat(res.books);
+                this.setData({
+                    dataArray: tempArray
+                });
+                this.data.loading = false;
+            })
         }
     }
 })
